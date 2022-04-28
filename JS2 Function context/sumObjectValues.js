@@ -14,7 +14,7 @@ let obj2 = {
 }
 
 const initialValue = 0;
-const reducer = (sum, cur) => typeof value === 'number' ? sum + cur : sum;
+const reducer = (sum, cur) => typeof cur === 'number' ? sum + cur : sum;
 const sumObjectValues1 = obj => Array.prototype.reduce.apply(Object.values(obj), [reducer, initialValue]);
 const sumObjectValues2 = obj => [].reduce.call(Object.values(obj), reducer, 0);
 
