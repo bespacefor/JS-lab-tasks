@@ -1,12 +1,11 @@
 // Develop page with two dropdowns “Title” and “Category”
 // Values of selections should invoke render of data from https://api.publicapis.org/
 // Handle possible error cases
-// Push code to repo “Asia chronicle”
 
 let catList = document.getElementById('categoriesList');
+let URL = 'https://api.publicapis.org/categories';
 
 (async () => {
-  let URL = 'https://api.publicapis.org/categories';
   let response = await fetch(URL);
 
   if (response.ok) {
@@ -25,7 +24,7 @@ let catList = document.getElementById('categoriesList');
       titList.innerHTML = '';
 
       let catURL = `https://api.publicapis.org/entries?category=${catList.value}`;
-      let titResponse = await fetch(catURL).catch(error => console.log(error));
+      let titResponse = await fetch(catURL).catch(error => console.error(error));
       let titData = await titResponse.json();
 
       for (let item of titData.entries) {
@@ -36,13 +35,11 @@ let catList = document.getElementById('categoriesList');
         titList.appendChild(titOption);
       }
 
-      titList.addEventListener('change', render);
-
-      async function render() {
+      titList.addEventListener('change', async () => {
         let artURL = `https://api.publicapis.org/entries?title=${titList.value}`;
-        let artResponse = await fetch(artURL).catch(error => console.log(error));
+        let artResponse = await fetch(artURL).catch(error => console.error(error));
         let artData = await artResponse.json();
-        console.log(artData);
+        //console.log(artData.entries[0]);
 
         let h1 = document.createElement('h1');
         h1.innerHTML = `Category: ${catList.value}`;
@@ -57,12 +54,12 @@ let catList = document.getElementById('categoriesList');
         document.body.appendChild(p);
 
         let a = document.createElement('a');
-        a.innerHTML = `Link: artData.entries[0].Link`;
+        a.innerHTML = artData.entries[0].Link;
         a.href = artData.entries[0].Link;
         document.body.appendChild(a);
-      }
+      });
     })
   } else {
-    alert("Ошибка HTTP: " + response.status);
+    alert('HTTP error: ' + response.status);
   }
 })();
