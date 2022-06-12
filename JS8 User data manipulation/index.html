@@ -8,7 +8,8 @@
     <title>Document</title>
     <style>
         #categoriesList,
-        #titlesList {
+        #titlesList,
+        button {
             width: 250px;
             height: 50px;
         }
@@ -23,6 +24,10 @@
         <select name="" id="titlesList"></select>
     </label>
     <script src="./script.js"></script>
+    <script type="module">
+        import { connectModule } from './module.js';
+        connectModule();
+    </script>
 </body>
 
 </html>
