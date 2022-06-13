@@ -37,13 +37,13 @@ let URL = 'https://api.publicapis.org/categories';
         let artData = await artResponse.json();
         //console.log(artData.entries[0]);
 
-        let h1 = document.createElement('h1');
-        h1.innerHTML = `Category: ${catList.value}`;
-        document.body.appendChild(h1);
-
         let h2 = document.createElement('h2');
-        h2.innerHTML = `Title: ${artData.entries[0].API}`;
+        h2.innerHTML = `Category: ${catList.value}`;
         document.body.appendChild(h2);
+
+        let h3 = document.createElement('h3');
+        h3.innerHTML = `Title: ${artData.entries[0].API}`;
+        document.body.appendChild(h3);
 
         let p = document.createElement('p');
         p.innerHTML = `Description: ${artData.entries[0].Description}`;

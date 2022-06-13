@@ -13,38 +13,58 @@ export function connectModule() {
     textInput.setAttribute('type', 'text');
     textLabel.append(textInput);
 
+    const saveBtn = document.createElement('button');
+    saveBtn.textContent = 'Save name';
+    textLabel.append(saveBtn);
+
+    const h1 = document.createElement('h1');
+    document.body.append(h1);
+    getName();
+
     textInput.addEventListener('change', setName);
 
     function setName() {
         localStorage.setItem('user', `${textInput.value}`);
     }
 
-    getName();
+    saveBtn.addEventListener('click', getName);
 
     function getName() {
-        if (localStorage.getItem('user') === null) {
+        if (localStorage.getItem('user') == null) {
             textLabel.style.color = 'red';
         } else {
-            textLabel.textContent = localStorage.getItem('user');
+            let curUser = localStorage.getItem('user');
+            h1.textContent = `Hello, ` + `${curUser}!`;
         }
     }
 
-    let curColor = localStorage.getItem('color');
-    document.body.style.backgroundColor = curColor;
+    const changeBtn = document.createElement('button');
+    changeBtn.textContent = 'Change theme';
+    textLabel.append(changeBtn);
 
-    const colorLabel = document.createElement('span');
-    colorLabel.textContent = 'Change the theme: ';
-    document.body.append(colorLabel);
+    // Use previous setting
+    let curTheme = () => {
+        return localStorage.getItem('theme');
+    }
 
-    const colorInput = document.createElement('input');
-    colorInput.setAttribute('type', 'color');
-    document.body.append(colorInput);
+    if (curTheme()) {
+        toggleClass();
+    }
 
-    colorInput.addEventListener('input', changeBgColor);
+    function toggleClass() {
+        document.body.classList.toggle('dark-theme');
+    }
 
-    function changeBgColor() {
-        document.body.style.backgroundColor = `${colorInput.value}`;
-        localStorage.setItem('color', `${colorInput.value}`);
-    };
+    // Choosing a theme
+    changeBtn.addEventListener('click', switchTheme);
 
+    function switchTheme() {
+        if (curTheme()) {
+            localStorage.removeItem('theme');
+        } else {
+            localStorage.setItem('theme', 'dark');
+        }
+
+        toggleClass();
+    }
 }
