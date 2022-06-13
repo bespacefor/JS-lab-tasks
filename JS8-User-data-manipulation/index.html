@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #categoriesList,
+        #titlesList {
+            width: 250px;
+            height: 50px;
+        }
+
+        button {
+            height: 25px;
+            margin-left: 5px;
+        }
+
+        .dark-theme {
+            background-color: grey;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="">
+        <select name="" id="categoriesList"></select>
+    </label>
+    <label for="">
+        <select name="" id="titlesList"></select>
+    </label>
+    <script src="./script.js"></script>
+    <script type="module">
+        import { connectModule } from './module.js';
+        connectModule();
+    </script>
+</body>
+
+</html>
