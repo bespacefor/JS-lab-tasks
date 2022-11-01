@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background:  lightblue;
+        }
+
+        .task {
+            width: 50%;
+            padding: 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .execution {
+            background: lightgreen;
+            font-size: 1.5rem;
+            width: 50%;
+            padding: 0 1rem;
+            padding: 1rem;
+            border: 4px dotted gray;
+        }
+
+        #button {
+           background: gray;
+           color: white;
+           border: none;
+           padding: 0.5rem 1.5rem;
+           font-size: 1rem;
+           cursor: pointer;
+           transition: outline 0.2s ease-in;
+        }
+
+        #button:hover {
+            outline: 1px solid white;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Implement program to print all permutations of a given string</h1>
+    <div class="task">
+        <p><b>Input: </b>ABC.</p>
+        <p><b>Output: </b>ABC, ACB, BAC, BCA, CAB, CBA.</p>
+        <p>*Print all permutations in sorted (lexicographic) order.</p>
+    </div>
+    <div class="execution">
+        <p>Input<br>
+            <input type="text" size="40" id="input" placeholder="ABC">
+        </p>
+        <button id="button">Print</button>
+        <p>Output<br>
+            <textarea id="output" cols="30" rows="10" placeholder="ABC, ACB, BAC, BCA, CAB, CBA"></textarea>
+        </p>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
